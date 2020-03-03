@@ -15,14 +15,14 @@ fn main() {
 	println!("800: {}", is_leap_year(800));
 
 	println!("\nValue swapping");
-	let mut a:i32 = 48;
-	let mut b:i32 = 72;
+	let mut a:i32 = 72;
+	let mut b:i32 = 48;
 	println!("a = {}, b = {}", a, b);
 	swap_values(&mut a, &mut b);
 	println!("a = {}, b = {}", a, b);
 
 	println!("\nGreatest common divisor");
-	println!("gcd(a, b) = {}", greatest_common_divisor(a as u32, b as u32));
+	println!("gcd({}, {}) = {}", a, b, greatest_common_divisor(a as u32, b as u32));
 
 	println!("\nFibonacci sequence");
 	println!("0: {}", fibonacci(0));
