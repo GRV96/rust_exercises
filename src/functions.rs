@@ -6,6 +6,25 @@ fn euclidian_algorithm(a:u32, b:u32) -> u32 {
 	return euclidian_algorithm(b, r);
 }
 
+pub fn fibonacci(n:u32) -> u64 {
+	let mut fib0:u64 = 0;
+	let mut fib1:u64 = 1;
+
+	if n == 0 {
+		return fib0;
+	}
+	if n == 1 {
+		return fib1;
+	}
+
+	for _ in 2..n+1 {
+		let tmp:u64 = fib1;
+		fib1 += fib0;
+		fib0 = tmp;
+	}
+	return fib1;
+}
+
 pub fn greatest_common_divisor(a:u32, b:u32) -> u32 {
 	if a < b {
 		euclidian_algorithm(b, a);
