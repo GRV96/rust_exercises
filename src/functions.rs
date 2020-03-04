@@ -36,8 +36,8 @@ pub fn is_leap_year(year:i32) -> bool {
 	return year%4==0 && year%100!=0 || year%400==0;
 }
 
-pub fn swap_values(val1:&mut i32, val2:&mut i32) {
-	let tmp:i32 = *val1;
+pub fn swap_values<T:Copy>(val1:&mut T, val2:&mut T) {
+	let tmp:T = *val1;
 	*val1 = *val2;
 	*val2 = tmp;
 }
