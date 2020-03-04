@@ -39,18 +39,41 @@ fn main() {
 	let mut num:i32 = 3;
 	let mut den:i32 = 7;
 	println!("\nnum: {}, den: {}", num, den);
-	let _fraction1 = Fraction::new(&num, &den);
-	println!("Fraction 1: {}", _fraction1);
-	println!("Numerator: {}, denominator: {}",
-		_fraction1.get_numerator(), _fraction1.get_denominator());
-	println!("Fraction 1 = {}", _fraction1.get_value());
+	let fraction1 = Fraction::new(&num, &den);
+	displayfraction(&fraction1, 1);
 
-	num = 5;
+	num = -5;
 	den = 15;
 	println!("\nnum: {}, den: {}", num, den);
-	let _fraction2 = Fraction::new(&num, &den);
-	println!("Fraction 2: {}", _fraction2);
+	let fraction2 = Fraction::new(&num, &den);
+	displayfraction(&fraction2, 2);
+
+	num = 48;
+	den = 72;
+	println!("\nnum: {}, den: {}", num, den);
+	let mut fraction3 = Fraction::new(&num, &den);
+	displayfraction(&fraction3, 3);
+
+	num = 18;
+	den = 24;
+	println!("\nnum: {}", num);
+	fraction3.set_numerator(&num);
+	displayfraction(&fraction3, 3);
+
+	println!("\nden: {}", den);
+	fraction3.set_denominator(&den);
+	displayfraction(&fraction3, 3);
+
+	num = -16;
+	den = -20;
+	println!("\nnum: {}, den: {}", num, den);
+	fraction3.set(&num, &den);
+	displayfraction(&fraction3, 3);
+}
+
+fn displayfraction(fraction:&Fraction, frac_number: u32) {
+	println!("Fraction {}: {}", frac_number, fraction);
 	println!("Numerator: {}, denominator: {}",
-		_fraction2.get_numerator(), _fraction2.get_denominator());
-	println!("Fraction 2 = {}", _fraction2.get_value());
+		fraction.get_numerator(), fraction.get_denominator());
+	println!("Fraction {} = {}", frac_number, fraction.get_value());
 }

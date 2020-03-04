@@ -54,7 +54,29 @@ impl Fraction {
 		return b;
 	}
 
-	pub fn simplify(&mut self) {
+	pub fn set(&mut self, numerator:&i32, denominator:&i32) {
+		if *denominator == 0 {
+			panic!("Fraction denominator cannot be 0.");
+		}
+		self.numerator = *numerator;
+		self.denominator = *denominator;
+		self.simplify();
+	}
+
+	pub fn set_denominator(&mut self, denominator:&i32) {
+		if *denominator == 0 {
+			panic!("Fraction denominator cannot be 0.");
+		}
+		self.denominator = *denominator;
+		self.simplify();
+	}
+
+	pub fn set_numerator(&mut self, numerator:&i32) {
+		self.numerator = *numerator;
+		self.simplify();
+	}
+
+	fn simplify(&mut self) {
 		let gcd:u32 = Fraction::greatest_common_divisor(&self.numerator, &self.denominator);
 		if gcd > 1 {
 			self.numerator /= gcd as i32;
