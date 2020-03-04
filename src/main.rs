@@ -4,6 +4,9 @@ use functions::is_leap_year;
 use functions::swap_values;
 use functions::fibonacci;
 
+mod fraction;
+use fraction::Fraction;
+
 fn main() {
     println!("Leap year test");
 	println!("-800: {}", is_leap_year(-800));
@@ -32,4 +35,22 @@ fn main() {
 	// Above 93, the result cannot be stored in u64.
 	println!("92: {}", fibonacci(92));
 	println!("93: {}", fibonacci(93));
+
+	let mut num:i32 = 3;
+	let mut den:i32 = 7;
+	println!("\nnum: {}, den: {}", num, den);
+	let _fraction1 = Fraction::new(&num, &den);
+	println!("Fraction 1: {}", _fraction1);
+	println!("Numerator: {}, denominator: {}",
+		_fraction1.get_numerator(), _fraction1.get_denominator());
+	println!("Fraction 1 = {}", _fraction1.get_value());
+
+	num = 5;
+	den = 15;
+	println!("\nnum: {}, den: {}", num, den);
+	let _fraction2 = Fraction::new(&num, &den);
+	println!("Fraction 2: {}", _fraction2);
+	println!("Numerator: {}, denominator: {}",
+		_fraction2.get_numerator(), _fraction2.get_denominator());
+	println!("Fraction 2 = {}", _fraction2.get_value());
 }
