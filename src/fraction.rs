@@ -13,10 +13,13 @@ impl fmt::Display for Fraction {
 }
 
 impl Fraction {
-	pub fn new(numerator:&i32, denominator:&i32) -> Fraction {
+	pub fn new(numerator:&i32, denominator:&i32) -> Result<Fraction, String> {
+		if *denominator == 0 {
+			return Err("ERROR! Fraction denominator cannot be 0.".to_string());
+		}
 		let mut fraction = Fraction {numerator: *numerator, denominator: *denominator};
 		fraction.simplify();
-		return fraction;
+		return Ok(fraction);
 	}
 
 	pub fn get_denominator(&self) -> i32 {

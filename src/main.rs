@@ -38,6 +38,7 @@ fn main() {
 
 	let mut num:i32 = 3;
 	let mut den:i32 = 7;
+	/* Does not compile because _fraction1 and _fraction2 contian a Result enum.
 	println!("\nnum: {}, den: {}", num, den);
 	let _fraction1 = Fraction::new(&num, &den);
 	println!("Fraction 1: {}", _fraction1);
@@ -53,4 +54,21 @@ fn main() {
 	println!("Numerator: {}, denominator: {}",
 		_fraction2.get_numerator(), _fraction2.get_denominator());
 	println!("Fraction 2 = {}", _fraction2.get_value());
+	*/
+
+	num = 11;
+	den = 0;
+	println!("\nnum: {}, den: {}", num, den);
+	let _fraction3 = Fraction::new(&num, &den);
+	match _fraction3 {
+		Ok(frac) => {
+			println!("Fraction 3: {}", frac);
+			println!("Numerator: {}, denominator: {}",
+			frac.get_numerator(), frac.get_denominator());
+			println!("Fraction 3 = {}", frac.get_value());
+		},
+		Err(msg) => {
+			println!("{}", msg);
+		}
+	}
 }
