@@ -14,6 +14,9 @@ impl fmt::Display for Fraction {
 
 impl Fraction {
 	pub fn new(numerator:&i32, denominator:&i32) -> Fraction {
+		if *denominator == 0 {
+			panic!("Fraction denominator cannot be 0.");
+		}
 		let mut fraction = Fraction {numerator: *numerator, denominator: *denominator};
 		fraction.simplify();
 		return fraction;
