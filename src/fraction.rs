@@ -13,11 +13,11 @@ impl fmt::Display for Fraction {
 }
 
 impl Fraction {
-	pub fn new(numerator:&i32, denominator:&i32) -> Fraction {
-		if *denominator == 0 {
+	pub fn new(numerator:i32, denominator:i32) -> Fraction {
+		if denominator == 0 {
 			panic!("Fraction denominator cannot be 0.");
 		}
-		let mut fraction = Fraction {numerator: *numerator, denominator: *denominator};
+		let mut fraction = Fraction {numerator: numerator, denominator: denominator};
 		fraction.simplify();
 		return fraction;
 	}
@@ -34,9 +34,9 @@ impl Fraction {
 		return self.numerator as f64 / self.denominator as f64;
 	}
 
-	fn greatest_common_divisor(num1:&i32, num2:&i32) -> u32 {
-		let mut a:u32 = (*num1).abs() as u32;
-		let mut b:u32 = (*num2).abs() as u32;
+	fn greatest_common_divisor(num1:i32, num2:i32) -> u32 {
+		let mut a:u32 = num1.abs() as u32;
+		let mut b:u32 = num2.abs() as u32;
 
 		if a < b {
 			mem::swap(&mut a, &mut b);
@@ -54,30 +54,30 @@ impl Fraction {
 		return b;
 	}
 
-	pub fn set(&mut self, numerator:&i32, denominator:&i32) {
-		if *denominator == 0 {
+	pub fn set(&mut self, numerator:i32, denominator:i32) {
+		if denominator == 0 {
 			panic!("Fraction denominator cannot be 0.");
 		}
-		self.numerator = *numerator;
-		self.denominator = *denominator;
+		self.numerator = numerator;
+		self.denominator = denominator;
 		self.simplify();
 	}
 
-	pub fn set_denominator(&mut self, denominator:&i32) {
-		if *denominator == 0 {
+	pub fn set_denominator(&mut self, denominator:i32) {
+		if denominator == 0 {
 			panic!("Fraction denominator cannot be 0.");
 		}
-		self.denominator = *denominator;
+		self.denominator = denominator;
 		self.simplify();
 	}
 
-	pub fn set_numerator(&mut self, numerator:&i32) {
-		self.numerator = *numerator;
+	pub fn set_numerator(&mut self, numerator:i32) {
+		self.numerator = numerator;
 		self.simplify();
 	}
 
 	fn simplify(&mut self) {
-		let gcd:u32 = Fraction::greatest_common_divisor(&self.numerator, &self.denominator);
+		let gcd:u32 = Fraction::greatest_common_divisor(self.numerator, self.denominator);
 		if gcd > 1 {
 			self.numerator /= gcd as i32;
 			self.denominator /= gcd as i32;
