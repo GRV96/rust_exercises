@@ -27,7 +27,7 @@ pub fn fibonacci(n:u32) -> u64 {
 
 pub fn greatest_common_divisor(a:u32, b:u32) -> u32 {
 	if a < b {
-		euclidian_algorithm(b, a);
+		return euclidian_algorithm(b, a);
 	}
 	return euclidian_algorithm(a, b);
 }
